@@ -7,11 +7,17 @@ import altair as alt
 import os
 
 # ---- PATH SETUP ----
-root_dir = "C:/Users/bandi/Desktop/PandoAI Cost/Vector/Web/sapbert-mpnet"
+root_dir = "sapbert-mpnet"
 model_dir = os.path.join(root_dir, "model")
 embed_dir = os.path.join(root_dir, "embeddings")
 index_dir = os.path.join(root_dir, "faiss_index")
 excel_path = "Vector.xlsx"
+
+# Debug log to confirm file availability
+if not os.path.exists(model_dir):
+    st.error(f"❌ Model folder not found: {model_dir}. Make sure Git LFS pulled all files.")
+else:
+    st.success(f"✅ Model folder loaded: {model_dir}")
 
 # ---- CACHING ----
 @st.cache_resource
