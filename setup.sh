@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Install Git LFS and pull actual model files
-apt-get update
-apt-get install git-lfs -y
-git lfs install
-git lfs pull
+# Install dependencies
+pip install -r requirements.txt
+
+# Precompute embeddings and FAISS index
+python convert.py
+
+# Run Streamlit app
+streamlit run app.py
